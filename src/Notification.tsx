@@ -1,4 +1,4 @@
-import { GestureResponderEvent, Image, StyleProp, StyleSheet, Text, TextStyle, TouchableOpacity, View } from "react-native"
+import { GestureResponderEvent, Image, ImageStyle, StyleProp, StyleSheet, Text, TextStyle, TouchableOpacity, View } from "react-native"
 
 export type InAppNotification = {
     title: string,
@@ -6,6 +6,7 @@ export type InAppNotification = {
     onPress?: (event: GestureResponderEvent) => void,
     titleTextStyle?: StyleProp<TextStyle>,
     messageTextStyle?: StyleProp<TextStyle>,
+    thumbnailStyle?: StyleProp<ImageStyle>,
     imgUrl?: string
 }
 
@@ -16,7 +17,7 @@ export const Notification: React.FC<InAppNotification> = (props) => {
             <TouchableOpacity activeOpacity={props.onPress ? undefined : 1} onPress={props.onPress} style={styles.main_touchable}>
                 <View style={styles.touchable_view_container}>
                     {
-                        props.imgUrl ? <Image source={{uri: props.imgUrl}} style={styles.image}/> : null
+                        props.imgUrl ? <Image source={{uri: props.imgUrl}} style={[styles.image, props.thumbnailStyle].flat(Infinity as 10)}/> : null
                     }
                     <View style={styles.text_container}>
                         <Text numberOfLines={1} style={[styles.title_text, props.titleTextStyle].flat(Infinity as 10)}>{props.title}</Text>

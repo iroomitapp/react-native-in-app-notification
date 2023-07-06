@@ -8,7 +8,7 @@ const jsx_runtime_1 = require("react/jsx-runtime");
 const react_1 = __importDefault(require("react"));
 const Notification_1 = require("./Notification");
 const react_native_1 = require("react-native");
-const Animation_1 = __importDefault(require("./Animation"));
+const Animation_1 = require("./Animation");
 exports.InAppNotificationContext = react_1.default.createContext({
     showNotification: (title, message, imgUrl, options) => { },
     dismissAll: () => { }
@@ -32,7 +32,7 @@ const InAppNotificationProvider = ({ children, titleTextStyle, messageTextStyle 
     react_1.default.useEffect(() => {
         if (allDismissed) {
             setAllDismissed(false);
-            setTimeout(_dismissNotification, 200);
+            setTimeout(_dismissNotification, 200); // give close anim time to run
         }
     }, [allDismissed]);
     react_1.default.useEffect(() => {
@@ -67,7 +67,7 @@ const InAppNotificationProvider = ({ children, titleTextStyle, messageTextStyle 
     const sanitizedCurrNotif = currNotif || {};
     delete sanitizedCurrNotif.titleTextStyle;
     delete sanitizedCurrNotif.messageTextStyle;
-    return ((0, jsx_runtime_1.jsxs)(exports.InAppNotificationContext.Provider, { value: { showNotification, dismissAll }, children: [children, currNotif ? ((0, jsx_runtime_1.jsx)(react_native_1.View, { pointerEvents: 'box-none', style: styles.notif_container, children: (0, jsx_runtime_1.jsx)(Animation_1.default, { onClose: () => {
+    return ((0, jsx_runtime_1.jsxs)(exports.InAppNotificationContext.Provider, { value: { showNotification, dismissAll }, children: [children, currNotif ? ((0, jsx_runtime_1.jsx)(react_native_1.View, { pointerEvents: 'box-none', style: styles.notif_container, children: (0, jsx_runtime_1.jsx)(Animation_1.Animation, { onClose: () => {
                         _dismissNotification();
                     }, earlyClose: notifyQ.length > 0, immediateClose: allDismissed, children: (0, jsx_runtime_1.jsx)(Notification_1.Notification, { titleTextStyle: [titleTextStyle, currNotif === null || currNotif === void 0 ? void 0 : currNotif.titleTextStyle], messageTextStyle: [messageTextStyle, currNotif === null || currNotif === void 0 ? void 0 : currNotif.messageTextStyle], ...sanitizedCurrNotif }) }) })) : null] }));
 };

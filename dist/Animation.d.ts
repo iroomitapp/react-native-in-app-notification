@@ -4,5 +4,5 @@ type AnimationProps = {
     immediateClose?: boolean;
     onClose?: Function;
 } & PropsWithChildren;
-declare const Animation: React.FC<AnimationProps>;
-export default Animation;
+export declare const Animation: React.FC<AnimationProps>;
+export {};

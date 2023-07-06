@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Animation = void 0;
 const jsx_runtime_1 = require("react/jsx-runtime");
 const react_1 = __importDefault(require("react"));
 const react_native_1 = require("react-native");
@@ -21,7 +22,10 @@ const Animation = (props) => {
                     toValue: -90,
                     useNativeDriver: true,
                     duration: 180
-                }).start();
+                }).start(() => {
+                    var _a;
+                    (_a = props.onClose) === null || _a === void 0 ? void 0 : _a.call(props);
+                });
             }
             else {
                 react_native_1.Animated.timing(anim, {
@@ -60,10 +64,10 @@ const Animation = (props) => {
         const closeDur = props.earlyClose ? 2800 : 8800;
         const diff = now - instantiated.current;
         if ((closeDur - diff) <= 0) {
+            clearTimeout(closeTimeout.current);
             closeAnim();
         }
         else {
-            console.log(closeDur - diff);
             closeTimeout.current = setTimeout(closeAnim, closeDur - diff);
         }
         return () => clearTimeout(closeTimeout.current);
@@ -74,4 +78,4 @@ const Animation = (props) => {
                         extrapolate: 'clamp'
                     }) }] }, children: props.children }));
 };
-exports.default = Animation;
+exports.Animation = Animation;

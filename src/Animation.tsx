@@ -7,7 +7,7 @@ type AnimationProps = {
     onClose?: Function
 } & PropsWithChildren;
 
-const Animation: React.FC<AnimationProps> = (props) => {
+export const Animation: React.FC<AnimationProps> = (props) => {
 
     const anim = React.useRef(new Animated.Value(-90)).current;
     const closeTimeout = React.useRef(0);
@@ -77,9 +77,9 @@ const Animation: React.FC<AnimationProps> = (props) => {
         const diff = now - instantiated.current;
 
         if ((closeDur - diff) <= 0) {
+            clearTimeout(closeTimeout.current);
             closeAnim();
         } else {
-            console.log(closeDur - diff);
             closeTimeout.current = setTimeout(closeAnim, closeDur - diff);
         }
         
@@ -98,5 +98,3 @@ const Animation: React.FC<AnimationProps> = (props) => {
     )
 
 }
-
-export default Animation;
