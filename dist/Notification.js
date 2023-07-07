@@ -15,7 +15,7 @@ const styles = react_native_1.StyleSheet.create({
         right: 15,
         top: 15,
         borderRadius: 8,
-        overflow: 'hidden',
+        overflow: 'visible',
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
