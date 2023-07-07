@@ -69,7 +69,6 @@ const isIPhoneWithMonobrow = () => isIPhoneWithMonobrow_v;
 exports.isIPhoneWithMonobrow = isIPhoneWithMonobrow;
 const isIPhoneWithDynamicIsland = () => isIPhoneWithDynamicIsland_v;
 exports.isIPhoneWithDynamicIsland = isIPhoneWithDynamicIsland;
-// @ts-expect-error
 const getExpoRoot = () => (global.Expo || global.__expo || global.__exponent);
 const isExpo = () => getExpoRoot() !== undefined;
 exports.isExpo = isExpo;

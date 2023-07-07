@@ -28,7 +28,7 @@ export const InAppNotificationProvider: React.FC<InAppNotificationProviderProps>
     const [notifyQ, setNotifyQ] = React.useState<InAppNotification[]>([]);
     const [currNotif, setCurrNotif] = React.useState<InAppNotification | null>(null);
     const [allDismissed, setAllDismissed] = React.useState(false);
-    const dismissTimeoutRef = React.useRef(0);
+    const dismissTimeoutRef = React.useRef(0 as unknown as NodeJS.Timeout);
     const lastAdded = React.useRef(new Date().getTime());
 
     const showNotification = (title: string, message: string, imgUrl?: string, options?: InAppNotificationOptions) => {

@@ -11,7 +11,7 @@ type AnimationProps = {
 export const Animation: React.FC<AnimationProps> = (props) => {
 
     const anim = React.useRef(new Animated.Value(-90 - getStatusBarHeight())).current;
-    const closeTimeout = React.useRef(0);
+    const closeTimeout = React.useRef(0 as unknown as NodeJS.Timeout);
     const instantiated = React.useRef(new Date().getTime());
 
     const panResponder = React.useRef(

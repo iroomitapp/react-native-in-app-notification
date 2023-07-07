@@ -1,12 +1,15 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.withInAppNotification = void 0;
-const jsx_runtime_1 = require("react/jsx-runtime");
+const react_1 = __importDefault(require("react"));
 const useInAppNotification_1 = require("./useInAppNotification");
 function withInAppNotification(Child) {
     return (props) => {
         const inAppNotification = (0, useInAppNotification_1.useInAppNotification)();
-        return (0, jsx_runtime_1.jsx)(Child, { ...props, inAppNotification: inAppNotification });
+        return <Child {...props} inAppNotification={inAppNotification}/>;
     };
 }
 exports.withInAppNotification = withInAppNotification;

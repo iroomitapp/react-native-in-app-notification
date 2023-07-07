@@ -65,10 +65,8 @@ export const isIPhoneXMax = (): boolean => isIPhoneXMax_v;
 export const isIPhone12 = (): boolean => isIPhone12_v;
 export const isIPhone12Max = (): boolean => isIPhone12Max_v;
 export const isIPhoneWithMonobrow = (): boolean => isIPhoneWithMonobrow_v;
-export const isIPhoneWithDynamicIsland = (): boolean =>
-  isIPhoneWithDynamicIsland_v;
+export const isIPhoneWithDynamicIsland = (): boolean => isIPhoneWithDynamicIsland_v;
 
-// @ts-expect-error
 const getExpoRoot = (): any => ((global as any).Expo || (global as any).__expo || (global as any).__exponent);
 
 export const isExpo = (): boolean => getExpoRoot() !== undefined;

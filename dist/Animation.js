@@ -4,7 +4,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Animation = void 0;
-const jsx_runtime_1 = require("react/jsx-runtime");
 const react_1 = __importDefault(require("react"));
 const react_native_1 = require("react-native");
 const StatusBar_1 = require("./StatusBar");
@@ -73,10 +72,12 @@ const Animation = (props) => {
         }
         return () => clearTimeout(closeTimeout.current);
     }, [props.earlyClose]);
-    return ((0, jsx_runtime_1.jsx)(react_native_1.Animated.View, { ...panResponder.panHandlers, style: { transform: [{ translateY: anim.interpolate({
+    return (<react_native_1.Animated.View {...panResponder.panHandlers} style={{ transform: [{ translateY: anim.interpolate({
                         inputRange: [-90 - (0, StatusBar_1.getStatusBarHeight)(), 12],
                         outputRange: [-90 - (0, StatusBar_1.getStatusBarHeight)(), 12],
                         extrapolate: 'clamp'
-                    }) }] }, children: props.children }));
+                    }) }] }}>
+            {props.children}
+        </react_native_1.Animated.View>);
 };
 exports.Animation = Animation;
