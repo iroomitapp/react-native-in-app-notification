@@ -1,5 +1,6 @@
 import React, { PropsWithChildren } from 'react';
 import { Animated, PanResponder } from 'react-native';
+import { getStatusBarHeight } from './StatusBar';
 
 type AnimationProps = {
     earlyClose?: boolean,
@@ -9,7 +10,7 @@ type AnimationProps = {
 
 export const Animation: React.FC<AnimationProps> = (props) => {
 
-    const anim = React.useRef(new Animated.Value(-90)).current;
+    const anim = React.useRef(new Animated.Value(-90 - getStatusBarHeight())).current;
     const closeTimeout = React.useRef(0);
     const instantiated = React.useRef(new Date().getTime());
 
@@ -22,7 +23,7 @@ export const Animation: React.FC<AnimationProps> = (props) => {
           onPanResponderRelease: (event, gestureState) => {
             if (gestureState.dy < 0) {
                 Animated.timing(anim, {
-                    toValue: -90,
+                    toValue: -90 - getStatusBarHeight(),
                     useNativeDriver: true,
                     duration: 180
                   }).start(() => {
@@ -46,7 +47,7 @@ export const Animation: React.FC<AnimationProps> = (props) => {
 
       const closeAnim = () => {
         Animated.timing(anim, {
-            toValue: -90,
+            toValue: -90 - getStatusBarHeight(),
             useNativeDriver: true,
             duration: 180
         }).start();
@@ -89,8 +90,8 @@ export const Animation: React.FC<AnimationProps> = (props) => {
 
     return (
         <Animated.View {...panResponder.panHandlers} style={{transform: [{translateY: anim.interpolate({
-            inputRange: [-90, 12],
-            outputRange: [-90, 12],
+            inputRange: [-90 - getStatusBarHeight(), 12],
+            outputRange: [-90 - getStatusBarHeight(), 12],
             extrapolate: 'clamp'
         })}]}}>
             {props.children}

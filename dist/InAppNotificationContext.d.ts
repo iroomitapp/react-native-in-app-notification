@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from 'react';
-import { GestureResponderEvent, StyleProp, TextStyle } from 'react-native';
+import { GestureResponderEvent, ImageStyle, StyleProp, TextStyle } from 'react-native';
 export type InAppNotificationContextType = {
     showNotification: (title: string, message: string, imgUrl?: string, options?: InAppNotificationOptions) => void;
     dismissAll: () => void;
@@ -11,6 +11,7 @@ export declare const InAppNotificationContext: React.Context<InAppNotificationCo
 type InAppNotificationProviderProps = {
     titleTextStyle?: StyleProp<TextStyle>;
     messageTextStyle?: StyleProp<TextStyle>;
+    thumbnailStyle?: StyleProp<ImageStyle>;
 } & PropsWithChildren;
 export declare const InAppNotificationProvider: React.FC<InAppNotificationProviderProps>;
 export {};

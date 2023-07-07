@@ -1,6 +1,6 @@
 {
   "name": "@iroomit/react-native-in-app-notification",
-  "version": "0.8.0",
+  "version": "0.8.2",
   "description": "A simple dropdown notification view for React Native that imitates a push notification for while the app is open. Can be called anywhere throughout your React Native application. ",
   "main": "dist/index.min.js",
   "types": "dist/index.d.ts",

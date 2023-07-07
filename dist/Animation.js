@@ -7,8 +7,9 @@ exports.Animation = void 0;
 const jsx_runtime_1 = require("react/jsx-runtime");
 const react_1 = __importDefault(require("react"));
 const react_native_1 = require("react-native");
+const StatusBar_1 = require("./StatusBar");
 const Animation = (props) => {
-    const anim = react_1.default.useRef(new react_native_1.Animated.Value(-90)).current;
+    const anim = react_1.default.useRef(new react_native_1.Animated.Value(-90 - (0, StatusBar_1.getStatusBarHeight)())).current;
     const closeTimeout = react_1.default.useRef(0);
     const instantiated = react_1.default.useRef(new Date().getTime());
     const panResponder = react_1.default.useRef(react_native_1.PanResponder.create({
@@ -19,7 +20,7 @@ const Animation = (props) => {
         onPanResponderRelease: (event, gestureState) => {
             if (gestureState.dy < 0) {
                 react_native_1.Animated.timing(anim, {
-                    toValue: -90,
+                    toValue: -90 - (0, StatusBar_1.getStatusBarHeight)(),
                     useNativeDriver: true,
                     duration: 180
                 }).start(() => {
@@ -42,7 +43,7 @@ const Animation = (props) => {
     })).current;
     const closeAnim = () => {
         react_native_1.Animated.timing(anim, {
-            toValue: -90,
+            toValue: -90 - (0, StatusBar_1.getStatusBarHeight)(),
             useNativeDriver: true,
             duration: 180
         }).start();
@@ -73,8 +74,8 @@ const Animation = (props) => {
         return () => clearTimeout(closeTimeout.current);
     }, [props.earlyClose]);
     return ((0, jsx_runtime_1.jsx)(react_native_1.Animated.View, { ...panResponder.panHandlers, style: { transform: [{ translateY: anim.interpolate({
-                        inputRange: [-90, 12],
-                        outputRange: [-90, 12],
+                        inputRange: [-90 - (0, StatusBar_1.getStatusBarHeight)(), 12],
+                        outputRange: [-90 - (0, StatusBar_1.getStatusBarHeight)(), 12],
                         extrapolate: 'clamp'
                     }) }] }, children: props.children }));
 };
