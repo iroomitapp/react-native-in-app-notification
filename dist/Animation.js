@@ -23,8 +23,7 @@ const Animation = (props) => {
                     useNativeDriver: true,
                     duration: 180
                 }).start(() => {
-                    var _a;
-                    (_a = props.onClose) === null || _a === void 0 ? void 0 : _a.call(props);
+                    props.onClose?.();
                 });
             }
             else {
@@ -72,12 +71,10 @@ const Animation = (props) => {
         }
         return () => clearTimeout(closeTimeout.current);
     }, [props.earlyClose]);
-    return (<react_native_1.Animated.View {...panResponder.panHandlers} style={{ transform: [{ translateY: anim.interpolate({
+    return (react_1.default.createElement(react_native_1.Animated.View, { ...panResponder.panHandlers, style: { transform: [{ translateY: anim.interpolate({
                         inputRange: [-90 - (0, StatusBar_1.getStatusBarHeight)(), 12],
                         outputRange: [-90 - (0, StatusBar_1.getStatusBarHeight)(), 12],
                         extrapolate: 'clamp'
-                    }) }] }}>
-            {props.children}
-        </react_native_1.Animated.View>);
+                    }) }] } }, props.children));
 };
 exports.Animation = Animation;

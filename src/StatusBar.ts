@@ -1,3 +1,4 @@
+import React from 'react';
 import { Dimensions, Platform, StatusBar } from "react-native";
 
 const STATUSBAR_DEFAULT_HEIGHT = 20;

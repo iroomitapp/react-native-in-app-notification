@@ -1,4 +1,4 @@
-/// <reference types="react" />
+import React from 'react';
 import { GestureResponderEvent, ImageStyle, StyleProp, TextStyle } from "react-native";
 export type InAppNotification = {
     title: string;

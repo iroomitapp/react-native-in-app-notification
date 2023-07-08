@@ -19,7 +19,7 @@ const InAppNotificationProvider = ({ children, titleTextStyle, messageTextStyle,
     const dismissTimeoutRef = react_1.default.useRef(0);
     const lastAdded = react_1.default.useRef(new Date().getTime());
     const showNotification = (title, message, imgUrl, options) => {
-        setNotifyQ(q => [...q, { title, message, imgUrl, onPress: options === null || options === void 0 ? void 0 : options.onPress }]);
+        setNotifyQ(q => [...q, { title, message, imgUrl, onPress: options?.onPress }]);
     };
     const _dismissNotification = () => {
         setCurrNotif(null);
@@ -67,17 +67,14 @@ const InAppNotificationProvider = ({ children, titleTextStyle, messageTextStyle,
     delete sanitizedCurrNotif.titleTextStyle;
     delete sanitizedCurrNotif.messageTextStyle;
     delete sanitizedCurrNotif.thumbnailStyle;
-    return (<exports.InAppNotificationContext.Provider value={{ showNotification, dismissAll }}>
-            {children}
-            {currNotif ? (<react_native_1.View pointerEvents='box-none' style={styles.notif_container}>
-                        <react_native_1.SafeAreaView />
-                        <Animation_1.Animation onClose={() => {
-                _dismissNotification();
-            }} earlyClose={notifyQ.length > 0} immediateClose={allDismissed}>
-                            <Notification_1.Notification titleTextStyle={[titleTextStyle, currNotif === null || currNotif === void 0 ? void 0 : currNotif.titleTextStyle]} messageTextStyle={[messageTextStyle, currNotif === null || currNotif === void 0 ? void 0 : currNotif.messageTextStyle]} thumbnailStyle={[thumbnailStyle, currNotif === null || currNotif === void 0 ? void 0 : currNotif.thumbnailStyle]} {...sanitizedCurrNotif}/>
-                        </Animation_1.Animation>
-                    </react_native_1.View>) : null}
-        </exports.InAppNotificationContext.Provider>);
+    return (react_1.default.createElement(exports.InAppNotificationContext.Provider, { value: { showNotification, dismissAll } },
+        children,
+        currNotif ? (react_1.default.createElement(react_native_1.View, { pointerEvents: 'box-none', style: styles.notif_container },
+            react_1.default.createElement(react_native_1.SafeAreaView, null),
+            react_1.default.createElement(Animation_1.Animation, { onClose: () => {
+                    _dismissNotification();
+                }, earlyClose: notifyQ.length > 0, immediateClose: allDismissed },
+                react_1.default.createElement(Notification_1.Notification, { titleTextStyle: [titleTextStyle, currNotif?.titleTextStyle], messageTextStyle: [messageTextStyle, currNotif?.messageTextStyle], thumbnailStyle: [thumbnailStyle, currNotif?.thumbnailStyle], ...sanitizedCurrNotif })))) : null));
 };
 exports.InAppNotificationProvider = InAppNotificationProvider;
 const styles = react_native_1.StyleSheet.create({

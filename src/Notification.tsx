@@ -1,3 +1,4 @@
+import React from 'react';
 import { GestureResponderEvent, Image, ImageStyle, StyleProp, StyleSheet, Text, TextStyle, TouchableOpacity, View } from "react-native"
 
 export type InAppNotification = {

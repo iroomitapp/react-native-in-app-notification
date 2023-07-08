@@ -1,3 +1,4 @@
+import React from 'react';
 import { Text } from 'react-native';
 import {jest, describe, it, expect} from '@jest/globals';
 import { render, fireEvent } from '@testing-library/react-native';

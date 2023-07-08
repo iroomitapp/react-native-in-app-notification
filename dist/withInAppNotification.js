@@ -9,7 +9,7 @@ const useInAppNotification_1 = require("./useInAppNotification");
 function withInAppNotification(Child) {
     return (props) => {
         const inAppNotification = (0, useInAppNotification_1.useInAppNotification)();
-        return <Child {...props} inAppNotification={inAppNotification}/>;
+        return react_1.default.createElement(Child, { ...props, inAppNotification: inAppNotification });
     };
 }
 exports.withInAppNotification = withInAppNotification;
