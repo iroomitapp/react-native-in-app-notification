@@ -1,7 +1,7 @@
 # React Native In-App Notification (@iroomit/react-native-in-app-notification)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://github.com/iroomitapp/react-native-in-app-notification/blob/main/LICENSE)
-![Version](https://img.shields.io/badge/Version-1.0.0-blue)
+[![Version](https://img.shields.io/npm/v/@iroomit/react-date-range)](https://www.npmjs.com/package/@iroomit/react-date-range)
 
 This library provides a simple interface for showing push notification-like messages throughout your React Native app on iOS and Android while it is in the foreground. Fully written in JS (TypeScript), no external libraries needed.
 
